@@ -39,7 +39,7 @@ class PageState extends State<MainPage> {
       appBar: AppBar( 
         centerTitle: true,
         title: Text(
-          "A very Wise Canvas"
+          "A very SUPER Wise Canvas"
         ),
       ),
       body: Center(
