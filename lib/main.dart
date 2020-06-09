@@ -39,7 +39,7 @@ class PageState extends State<MainPage> {
       appBar: AppBar( 
         centerTitle: true,
         title: Text(
-          "Andy's Canvas"
+          "A very Wise Canvas"
         ),
       ),
       body: Center(
@@ -50,7 +50,7 @@ class PageState extends State<MainPage> {
               child: TextField(
                 onSubmitted: changeText,
                 decoration: InputDecoration(
-                  hintText: "Hint text sample",
+                  hintText: "Yo Wise type something here and click enter",  // this is new, I made this change and now you can see it too
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
                   ),
