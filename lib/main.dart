@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "dart:math";
+import 'package:gradient_app_bar/gradient_app_bar.dart';
 
 main() {
   runApp(MyApp());
@@ -10,9 +11,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData( 
-        primarySwatch: Colors.pink,
-      ),
       home: MainPage(),
     );
   }
@@ -49,7 +47,9 @@ class PageState extends State<MainPage> {
   @override 
   Widget build(BuildContext context) {
     return Scaffold( 
-      appBar: AppBar( 
+      appBar: GradientAppBar( 
+        backgroundColorStart: Colors.pink,
+        backgroundColorEnd: Colors.orange,
         centerTitle: true,
         title: Text(
           "ENCRYPTED TEXT"
@@ -63,7 +63,7 @@ class PageState extends State<MainPage> {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(50,0,50,0),
                 child: TextField(
-                  onSubmitted: changeText,
+                  onChanged: changeText,
                   decoration: InputDecoration(
                     hintText: "Yo Wise type something here and click enter",  // this is new, I made this change and now you can see it too
                     border: OutlineInputBorder(
@@ -72,7 +72,7 @@ class PageState extends State<MainPage> {
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(200),
                       borderSide: BorderSide(
-                        color: Colors.pink[300],
+                        color: Colors.pink,
                         width: 3,
                       )
                     ),
@@ -90,7 +90,11 @@ class PageState extends State<MainPage> {
             SizedBox(
               height: 20,     //SizeBox is essentially identical to Container
             ),
-            Text("$text"),
+            Text("$text",
+            style: TextStyle( 
+              fontSize: 20,
+            ),
+            ),
           ],
         ),
       )
