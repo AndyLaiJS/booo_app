@@ -24,12 +24,25 @@ class MainPage extends StatefulWidget {
 }
 
 class PageState extends State<MainPage> {
-
+  var dic = {'a':'q', 'b':'r', 'c':'s', 'd':'t', 'e':'u', 'f':'v', 'g':'w', 'h':'x', 'i':'y', 'j':'z', 'k':'a'
+  , 'l':'b', 'm':'c', 'n':'d', 'o':'e', 'p':'f', 'q':'g', 'r':'h', 's':'i', 't':'j', 'u':'k', 'v':'l', 'w':'m',
+   'x':'n', 'y':'o', 'z':'p'};
   var text = "Not yet";
 
   void changeText(var str) {
     setState(() {
-      text = str;
+      text = "";
+      for (int i=0; i< str.length ; i++){
+        if (str[i] == " ") {
+          text += " ";
+        }
+        else if(str[i] == str[i].toLowerCase()){
+          text += dic[str[i]];
+        }
+        else {
+           text += dic[str[i].toLowerCase()].toUpperCase();
+        }
+      }
     });
   }
 
@@ -39,7 +52,7 @@ class PageState extends State<MainPage> {
       appBar: AppBar( 
         centerTitle: true,
         title: Text(
-          "A very SUPER Wise Canvas"
+          "ENCRYPTED TEXT"
         ),
       ),
       body: Center(
@@ -48,7 +61,7 @@ class PageState extends State<MainPage> {
           children: <Widget>[
             Center(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(100,0,100,0),
+                padding: const EdgeInsets.fromLTRB(50,0,50,0),
                 child: TextField(
                   onSubmitted: changeText,
                   decoration: InputDecoration(
