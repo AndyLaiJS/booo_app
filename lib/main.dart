@@ -54,15 +54,17 @@ class PageState extends State<MainPage> {
                   decoration: InputDecoration(
                     hintText: "Hint text sample",
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5.0),
+                      borderRadius: BorderRadius.circular(200),
                     ),
                     enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(200),
                       borderSide: BorderSide(
                         color: Colors.pink[300],
                         width: 3,
                       )
                     ),
                     focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(200),
                       borderSide: BorderSide(
                         color: Colors.pink,
                         width: 4,
