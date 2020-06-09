@@ -47,28 +47,25 @@ class PageState extends State<MainPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Center(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
-                child: TextField(
-                  onSubmitted: changeText,
-                  decoration: InputDecoration(
-                    hintText: "Hint text sample",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.pink[300],
-                        width: 3,
-                      )
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.pink,
-                        width: 4,
-                      )
+              child: TextField(
+                onSubmitted: changeText,
+                decoration: InputDecoration(
+                  hintText: "Hint text sample",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.pink[300],
+                      width: 3,
                     )
                   ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.pink,
+                      width: 4,
+                    )
+                  )
                 ),
               )
             ),
