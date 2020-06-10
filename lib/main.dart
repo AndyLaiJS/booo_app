@@ -59,9 +59,45 @@ class PageState extends State<MainPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: 80,
+                maxWidth: 250,
+              ),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.pink.withOpacity(0.5),
+                      spreadRadius: 1,
+                      blurRadius: 10,
+                      offset: Offset(0, 1), // changes position of shadow
+                    ),
+                  ],
+                  gradient: LinearGradient(
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomLeft,
+                    colors: [Colors.orange, Colors.pink],
+                  ),
+                ),
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Text(
+                      "$text",
+                      style: TextStyle( 
+                        fontSize: 20,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
             Center(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(50,0,50,0),
+                padding: const EdgeInsets.fromLTRB(50,20,50,0),
                 child: TextField(
                   onChanged: changeText,
                   decoration: InputDecoration(
@@ -86,15 +122,6 @@ class PageState extends State<MainPage> {
                   ),
                 ),
               )
-            ),
-            SizedBox(
-              height: 20,     //SizeBox is essentially identical to Container
-            ),
-            Text(
-              "$text",
-              style: TextStyle( 
-                fontSize: 20,
-              ),
             ),
           ],
         ),
