@@ -90,10 +90,11 @@ class PageState extends State<MainPage> {
             SizedBox(
               height: 20,     //SizeBox is essentially identical to Container
             ),
-            Text("$text",
-            style: TextStyle( 
-              fontSize: 20,
-            ),
+            Text(
+              "$text",
+              style: TextStyle( 
+                fontSize: 20,
+              ),
             ),
           ],
         ),
