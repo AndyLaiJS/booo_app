@@ -59,45 +59,12 @@ class PageState extends State<MainPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-<<<<<<< HEAD
-            ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: 80,
-                maxWidth: 250,
-              ),
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.pink.withOpacity(0.5),
-                      spreadRadius: 1,
-                      blurRadius: 10,
-                      offset: Offset(0, 1), // changes position of shadow
-                    ),
-                  ],
-                  gradient: LinearGradient(
-                    begin: Alignment.topRight,
-                    end: Alignment.bottomLeft,
-                    colors: [Colors.orange, Colors.pink],
-                  ),
-                ),
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Text(
-                      "$text",
-                      style: TextStyle( 
-                        fontSize: 20,
-                        color: Colors.white,
-=======
             Padding(
               padding: const EdgeInsets.fromLTRB(10,0, 10 ,30),
               child: ConstrainedBox(
                 constraints: BoxConstraints( 
                   maxWidth: 250,
                   minHeight: 80,
-                  maxHeight: 200,
                 ),
                 child: Container(
                 decoration: BoxDecoration(
@@ -127,7 +94,6 @@ class PageState extends State<MainPage> {
                         color: Colors.white,
                         fontSize: 20,
                       ),
->>>>>>> 4e58b4af5341ada9316efa068447c9ac7d014dc5
                       ),
                     ),
                   ),
@@ -162,10 +128,6 @@ class PageState extends State<MainPage> {
                 ),
               )
             ),
-<<<<<<< HEAD
-=======
-            
->>>>>>> 4e58b4af5341ada9316efa068447c9ac7d014dc5
           ],
         ),
       )
