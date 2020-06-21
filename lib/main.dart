@@ -1,6 +1,12 @@
 import "package:flutter/material.dart";
 import "dart:math";
 import 'package:gradient_app_bar/gradient_app_bar.dart';
+import 'chatBot.dart';
+import 'line.dart';
+import 'decipher.dart';
+import 'cipher.dart';
+import 'note.dart';
+import 'cool.dart';
 
 main() {
   runApp(MyApp());
@@ -22,11 +28,42 @@ class MainPage extends StatefulWidget {
 }
 
 class PageState extends State<MainPage> {
+  var pageIndex = 0;
   var dic = {'a':'q', 'b':'r', 'c':'s', 'd':'t', 'e':'u', 'f':'v', 'g':'w', 'h':'x', 'i':'y', 'j':'z', 'k':'a'
   , 'l':'b', 'm':'c', 'n':'d', 'o':'e', 'p':'f', 'q':'g', 'r':'h', 's':'i', 't':'j', 'u':'k', 'v':'l', 'w':'m',
    'x':'n', 'y':'o', 'z':'p'};
   var text = "Not yet";
+  var count = 0;
 
+  var List = [
+    Cipher(),
+    Decipher(),
+    Temp(),
+    Dash(),
+  ];
+
+  void decipher(var str) {
+    setState(() {
+      text = "";
+      count = 0;
+      for (int i=0; i<str.length; i++) {
+        dic.forEach((key, value) {
+          if (str[i] == " ") {
+            text += " ";
+          } else if(str[i] == str[i].toLowerCase()) {
+            if (str[i] == value) {
+              text += key;
+            }
+          } else {
+            if (str[i].toLowerCase() == value) {
+              text += key.toUpperCase();
+            }
+          }
+        });
+      }
+    });
+  }
+  
   void changeText(var str) {
     setState(() {
       text = "";
@@ -52,85 +89,95 @@ class PageState extends State<MainPage> {
         backgroundColorEnd: Colors.orange,
         centerTitle: true,
         title: Text(
-          "ENCRYPTED TEXT"
+          "Sam"
         ),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.fromLTRB(10,0, 10 ,30),
-              child: ConstrainedBox(
-                constraints: BoxConstraints( 
-                  maxWidth: 250,
-                  minHeight: 80,
-                ),
-                child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: new BorderRadius.only(
-                    topRight: const Radius.circular(15),
-                    topLeft: const Radius.circular(15),
-                    bottomLeft: const Radius.circular(15),
-                    bottomRight: const Radius.circular(15),
-                ),
-                boxShadow: [
-                  BoxShadow( 
-                    color: Colors.pink.withOpacity(0.3),
-                    spreadRadius: 2,
-                    blurRadius: 5,
-                    offset: Offset(0,1),
-                  )
-                ],
-                gradient: LinearGradient(
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft,
-                colors: [Colors.orange, Colors.pink])),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Center(
-                      child: Text("$text",
-                      style: TextStyle( 
-                        color: Colors.white,
-                        fontSize: 20,
-                      ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(50,20,50,0),
-                child: TextField(
-                  onChanged: changeText,
-                  decoration: InputDecoration(
-                    hintText: "Yo Wise type something here and click enter",  // this is new, I made this change and now you can see it too
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(200),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(200),
-                      borderSide: BorderSide(
-                        color: Colors.pink,
-                        width: 3,
-                      )
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(200),
-                      borderSide: BorderSide(
-                        color: Colors.pink,
-                        width: 4,
-                      )
+      drawer: Drawer(
+        child: ListView(
+          padding: const EdgeInsets.all(0.0),
+          children: <Widget> [
+            Container(
+              height: 150,
+              child: DrawerHeader(
+                child: Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Text(
+                    "Yoooo",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 25,
                     )
                   ),
                 ),
-              )
+                decoration: BoxDecoration(
+                  color: Colors.pinkAccent,
+                ),
+              ),
+            ),
+            ListTile(
+              title: Text("Never"),
+            ),
+            ListTile(
+              title: Text("Settle"),
+            ),
+            ListTile(
+              title: Text("Don't buy"),
+            ),
+            ListTile(
+              title: Text("Chinese phones"),
             ),
           ],
         ),
-      )
+      ),
+      body: List[pageIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        currentIndex: pageIndex,
+        onTap: (index) {
+          setState(() {
+            pageIndex = index;
+          });
+        },
+        fixedColor: Colors.pink,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.lock),
+            title: Text("Cipher"),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.lock_open),
+            title: Text("Decipher")
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.edit),
+            title: Text("Note")
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.help_outline),
+            title: Text("Note")
+          ),
+        ]
+        // child: Container(
+        //   height: 70,
+        //   child: Row(
+        //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        //     children: <Widget>[
+        //       IconButton(
+        //         color: Colors.pink,
+        //         icon: Icon(Icons.lock),
+        //         onPressed: () => {}
+        //       ),
+        //       IconButton(
+        //         icon: Icon(Icons.lock_open),
+        //         onPressed: () => Navigator.push(context, new MaterialPageRoute(
+        //           builder: (context) => new Decipher()
+        //           )
+        //         ),
+        //       )
+        //     ],
+        //   ),
+        // )
+      ),
     );
   }
 }
