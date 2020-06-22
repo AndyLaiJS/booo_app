@@ -44,77 +44,86 @@ class CipherState extends State<CipherPage> {
   @override 
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(
+          padding: EdgeInsets.zero,
+          shrinkWrap: true,
           children: <Widget>[
-            ConstrainedBox(
-              constraints: BoxConstraints( 
-                minHeight: 80,
-              ),
-              child: Container( 
-                width: 250,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(15)),
-                  gradient: LinearGradient(
-                    begin: Alignment.topRight,
-                    end: Alignment.bottomLeft,
-                    colors: [Colors.orange, Colors.pink],
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                ConstrainedBox(
+                  constraints: BoxConstraints( 
+                    minHeight: 80,
                   ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.pink.withOpacity(0.5),
-                      spreadRadius: 1,
-                      blurRadius: 10,
-                      offset: Offset(0, 1), 
-                    )
-                  ],
-                ),
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Text(
-                      "$text",
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.white
+                  child: Container( 
+                    width: 250,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                      gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: [Colors.orange, Colors.pink],
                       ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.pink.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 10,
+                          offset: Offset(0, 1), 
+                        )
+                      ],
                     ),
-                  )
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Container(
-              width: 280,
-              child: TextField(
-                onChanged: changeText,
-                decoration: InputDecoration(
-                    hintText: "Cipher",
-
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                      borderSide: BorderSide(
-                          color: Colors.pink[300],
-                          width: 3,
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Text(
+                          "$text",
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white
+                          ),
+                        ),
                       )
                     ),
-
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                      borderSide: BorderSide(
-                          color: Colors.pink,
-                          width: 4,
-                      )
-                    )
+                  ),
                 ),
-                
-              ),
-            )
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  width: 280,
+                  child: TextField(
+                    minLines: 1,
+                    maxLines: 5,
+                    onChanged: changeText,
+                    decoration: InputDecoration(
+                        hintText: "Cipher",
+
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          borderSide: BorderSide(
+                              color: Colors.pink[300],
+                              width: 3,
+                          )
+                        ),
+
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                          borderSide: BorderSide(
+                              color: Colors.pink,
+                              width: 4,
+                          )
+                        )
+                    ),
+                    
+                  ),
+                )
+              ],
+            ),
           ],
-        )
+        ),
       ),
     );
   }

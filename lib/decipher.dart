@@ -112,6 +112,8 @@ class DecipherState extends State<DecipherPage> {
             Container(
               width: 280,
               child: TextField(
+                minLines: 1,
+                maxLines: 5,
                 onChanged: decipher,
                 decoration: InputDecoration(
                     hintText: "Decipher",
